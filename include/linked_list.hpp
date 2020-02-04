@@ -39,6 +39,8 @@ namespace ll{
 
 		ListNode<Type>* getAt(unsigned int pos);
 
+		ListNode<Type>* find(Type data);
+
 		bool push_front(Type data);
 
 		bool push_back(Type data);

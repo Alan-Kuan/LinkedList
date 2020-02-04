@@ -47,7 +47,18 @@ ll::ListNode<Type>* ll::LinkedList<Type>::getAt(unsigned int pos){
 
 	for(int i = 0; curr != nullptr && i < pos; curr = curr -> next, i++);
 
-	return curr;
+	return curr; // returns nullptr if the required node was not found
+
+}
+
+template <class Type>
+ll::ListNode<Type>* ll::LinkedList<Type>::find(Type data){
+
+	ll::ListNode<Type>* curr = head;
+
+	for(; curr != nullptr && curr -> data != data; curr = curr -> next);
+
+	return curr; // returns nullptr if the required node was not found
 
 }
 
