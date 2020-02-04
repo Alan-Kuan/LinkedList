@@ -1,14 +1,14 @@
 #include "../include/linked_list.hpp"
 
 template <class Type>
-void ListNode<Type>::setData(Type data){
+void ll::ListNode<Type>::setData(Type data){
 
 	this -> data = data;
 
 }
 
 template <class Type>
-Type ListNode<Type>::getData(void){
+Type ll::ListNode<Type>::getData(void){
 
 	return data;
 
@@ -16,34 +16,34 @@ Type ListNode<Type>::getData(void){
 
 
 template <class Type>
-LinkedList<Type>::LinkedList(void){
+ll::LinkedList<Type>::LinkedList(void){
 
 	head = nullptr;
 
 }
 
 template <class Type>
-LinkedList<Type>::~LinkedList(void){
+ll::LinkedList<Type>::~LinkedList(void){
 
 	clear();
 
 }
 
 template <class Type>
-unsigned int LinkedList<Type>::size(void){
+unsigned int ll::LinkedList<Type>::size(void){
 
 	unsigned int size = 0;
 
-	for(ListNode<Type>* curr = head; curr != nullptr; curr = curr -> next, size++);
+	for(ll::ListNode<Type>* curr = head; curr != nullptr; curr = curr -> next, size++);
 
 	return size;
 
 }
 
 template <class Type>
-ListNode<Type>* LinkedList<Type>::getAt(unsigned int pos){
+ll::ListNode<Type>* ll::LinkedList<Type>::getAt(unsigned int pos){
 
-	ListNode<Type>* curr = head;
+	ll::ListNode<Type>* curr = head;
 
 	for(int i = 0; curr != nullptr && i < pos; curr = curr -> next, i++);
 
@@ -52,9 +52,9 @@ ListNode<Type>* LinkedList<Type>::getAt(unsigned int pos){
 }
 
 template <class Type>
-bool LinkedList<Type>::push_front(Type data){
+bool ll::LinkedList<Type>::push_front(Type data){
 
-	ListNode<Type>* new_node = new ListNode<Type>();
+	ll::ListNode<Type>* new_node = new ll::ListNode<Type>();
 
 	// memory allocation failed
 	if(new_node == nullptr)
@@ -71,12 +71,12 @@ bool LinkedList<Type>::push_front(Type data){
 }
 
 template <class Type>
-bool LinkedList<Type>::push_back(Type data){
+bool ll::LinkedList<Type>::push_back(Type data){
 
 	if(head == nullptr)
 		return push_front(data);
 
-	ListNode<Type>* new_node = new ListNode<Type>();
+	ll::ListNode<Type>* new_node = new ll::ListNode<Type>();
 
 	// memory allocation failed
 	if(new_node == nullptr)
@@ -86,7 +86,7 @@ bool LinkedList<Type>::push_back(Type data){
 
 	new_node -> next = nullptr;
 
-	ListNode<Type>* tail = head;
+	ll::ListNode<Type>* tail = head;
 
 	for(; tail -> next != nullptr; tail = tail -> next);
 
@@ -97,9 +97,9 @@ bool LinkedList<Type>::push_back(Type data){
 }
 
 template <class Type>
-bool LinkedList<Type>::insert(Type data, unsigned int pos){
+bool ll::LinkedList<Type>::insert(Type data, unsigned int pos){
 
-	ListNode<Type>* new_node = new ListNode<Type>();
+	ll::ListNode<Type>* new_node = new ll::ListNode<Type>();
 
 	// memory allocation failed
 	if(new_node == nullptr)
@@ -110,7 +110,7 @@ bool LinkedList<Type>::insert(Type data, unsigned int pos){
 	if(pos == 0)
 		return push_front(data);
 
-	ListNode<Type>* prev = getAt(pos - 1);
+	ll::ListNode<Type>* prev = getAt(pos - 1);
 
 	// position was not found
 	if(prev == nullptr)
@@ -125,7 +125,7 @@ bool LinkedList<Type>::insert(Type data, unsigned int pos){
 }
 
 template <class Type>
-bool LinkedList<Type>::remove(ListNode<Type>* node){
+bool ll::LinkedList<Type>::remove(ListNode<Type>* node){
 
 	if(node == nullptr)
 		return false;
@@ -140,7 +140,7 @@ bool LinkedList<Type>::remove(ListNode<Type>* node){
 
 	}
 
-	LinkedList<Type>* prev = head;
+	ll::LinkedList<Type>* prev = head;
 
 	for(; prev != nullptr && prev -> next != node; prev = prev -> next);
 
@@ -157,18 +157,18 @@ bool LinkedList<Type>::remove(ListNode<Type>* node){
 } 
 
 template <class Type>
-bool LinkedList<Type>::remove(unsigned int pos){
+bool ll::LinkedList<Type>::remove(unsigned int pos){
 
 	return remove(getAt(pos));
 
 }
 
 template <class Type>
-void LinkedList<Type>::clear(void){
+void ll::LinkedList<Type>::clear(void){
 
-	ListNode<Type>* prev = nullptr;
+	ll::ListNode<Type>* prev = nullptr;
 
-	ListNode<Type>* curr = head;
+	ll::ListNode<Type>* curr = head;
 
 	while(curr != nullptr){
 
@@ -185,9 +185,9 @@ void LinkedList<Type>::clear(void){
 }
 
 template <class Type>
-void LinkedList<Type>::print(void){
+void ll::LinkedList<Type>::print(void){
 
-	ListNode<Type>* curr = head;
+	ll::ListNode<Type>* curr = head;
 
 	std::cout << '[';
 
