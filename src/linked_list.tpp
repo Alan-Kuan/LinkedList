@@ -1,6 +1,6 @@
 #include "../include/linked_list.hpp"
 
-// ListNode
+//----------- ListNode -----------//
 template <class Type>
 void ll::ListNode<Type>::setData(Type data){
 
@@ -16,7 +16,7 @@ Type ll::ListNode<Type>::getData(void){
 }
 
 
-// LinkedList
+//----------- LinkedList -----------//
 template <class Type>
 ll::LinkedList<Type>::LinkedList(void){
 
@@ -135,28 +135,20 @@ bool ll::LinkedList<Type>::remove(ListNode<Type>* node){
 
 	if(node == nullptr)
 		return false;
+	
+	ll::ListNode<Type>** indirect = &head;
 
-	if(node == head){
+	for(; *indirect != nullptr && *indirect != node; indirect = &((*indirect) -> next));
 
-		head = node -> next;
-
-		delete node;
-
-		return true;
-
-	}
-
-	ll::ListNode<Type>* prev = head;
-
-	for(; prev != nullptr && prev -> next != node; prev = prev -> next);
-
-	// node was not found
-	if(prev == nullptr)
+	// the node is not in the list
+	if(*indirect == nullptr)
 		return false;
 
-	prev -> next = node -> next;
+	*indirect = (*indirect) -> next;
 
 	delete node;
+
+	_size--;
 
 	return true;
 
