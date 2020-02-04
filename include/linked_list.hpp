@@ -1,26 +1,36 @@
 #ifndef LINKED_LIST_HPP
 #define LINKED_LIST_HPP
 
+#include <iostream>
+
 template <class Type>
 class ListNode{
 
+	template <class> friend class LinkedList;
+
+private:
 	Type data;
 
 	ListNode* next;
+
+public:
+	Type getData(void);
+
+	void setData(Type data);
 
 };
 
 template <class Type>
 class LinkedList{
 
-	LinkedList(void);
-
-	~LinkedList(void);
-
 private:
 	ListNode<Type>* head;
 
 public:
+	LinkedList(void);
+
+	~LinkedList(void);
+
 	unsigned int size(void);
 
 	ListNode<Type>* getAt(unsigned int pos);
@@ -36,6 +46,8 @@ public:
 	bool remove(unsigned int pos);
 
 	bool clear(void);
+
+	void print(void);
 
 };
 

@@ -1,6 +1,21 @@
 #include "../include/linked_list.hpp"
 
 template <class Type>
+void ListNode<Type>::setData(Type data){
+
+	this -> data = data;
+
+}
+
+template <class Type>
+Type ListNode<Type>::getData(void){
+
+	return data;
+
+}
+
+
+template <class Type>
 LinkedList<Type>::LinkedList(void){
 
 	head = nullptr;
@@ -166,5 +181,25 @@ bool LinkedList<Type>::clear(void){
 	}
 
 	head = nullptr;
+
+}
+
+template <class Type>
+void LinkedList<Type>::print(void){
+
+	ListNode<Type>* curr = head;
+
+	std::cout << '[';
+
+	while(curr != nullptr){
+
+		std::cout << curr -> data;
+
+		if((curr = curr -> next) != nullptr)
+			std::cout << ", ";
+
+	}
+
+	std::cout << "]" << std::endl;
 
 }
