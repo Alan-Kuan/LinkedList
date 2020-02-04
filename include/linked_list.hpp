@@ -45,7 +45,7 @@ public:
 
 	bool remove(unsigned int pos);
 
-	bool clear(void);
+	void clear(void);
 
 	void print(void);
 

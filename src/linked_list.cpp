@@ -164,7 +164,7 @@ bool LinkedList<Type>::remove(unsigned int pos){
 }
 
 template <class Type>
-bool LinkedList<Type>::clear(void){
+void LinkedList<Type>::clear(void){
 
 	ListNode<Type>* prev = nullptr;
 
