@@ -3,9 +3,11 @@
 
 using namespace std;
 
+using namespace ll;
+
 namespace Cmd{
 
-	enum {exit, push_front, push_back, insert, remove, getAt, update, clear, print};
+	enum {exit, push_front, push_back, insert, update, removeAt, getAt, clear, print};
 
 }
 
@@ -21,13 +23,15 @@ int main(void){
 
 	do{
 
-		cout << "0: exit, 1: push front, 2: push back, 3: insert, 4: remove, 5: get at, 6: update, 7: clear, 8: print" << endl;
+		cout << "0: exit, 1: push front, 2: push back, 3: insert, 4: update, 5: remove at, 6: get at, 7: clear, 8: print" << endl;
+
+		cout << "Enter the command code: ";
 
 		cin >> cmd;
 
-		if(1 <= cmd && cmd <= 3){
+		if(1 <= cmd && cmd <= 4){
 
-			cout << "Enter the data: ";
+			cout << "Enter the new data: ";
 
 			cin >> args[0];
 
@@ -58,7 +62,7 @@ int main(void){
 			case Cmd::insert:
 				list.insert(args[0], args[1]) ? cout << "Successfully inserted " << args[0] << " at " << args[1] << '.' << endl : cout << "Failed: An error occurred while allocating memory, or the given position was out of bound." << endl;
 				break;
-			case Cmd::remove:
+			case Cmd::removeAt:
 				if(list.remove(getten_node)) cout << "Successfully removed the node at " << args[1] << '.' << endl;
 				break;
 			case Cmd::getAt:
