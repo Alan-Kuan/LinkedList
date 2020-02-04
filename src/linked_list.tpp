@@ -140,7 +140,7 @@ bool ll::LinkedList<Type>::remove(ListNode<Type>* node){
 
 	}
 
-	ll::LinkedList<Type>* prev = head;
+	ll::ListNode<Type>* prev = head;
 
 	for(; prev != nullptr && prev -> next != node; prev = prev -> next);
 
