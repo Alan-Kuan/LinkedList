@@ -1,5 +1,6 @@
 #include "../include/linked_list.hpp"
 
+// ListNode
 template <class Type>
 void ll::ListNode<Type>::setData(Type data){
 
@@ -15,10 +16,13 @@ Type ll::ListNode<Type>::getData(void){
 }
 
 
+// LinkedList
 template <class Type>
 ll::LinkedList<Type>::LinkedList(void){
 
 	head = nullptr;
+
+	_size = 0;
 
 }
 
@@ -30,13 +34,9 @@ ll::LinkedList<Type>::~LinkedList(void){
 }
 
 template <class Type>
-unsigned int ll::LinkedList<Type>::size(void){
+size_t ll::LinkedList<Type>::size(void){
 
-	unsigned int size = 0;
-
-	for(ll::ListNode<Type>* curr = head; curr != nullptr; curr = curr -> next, size++);
-
-	return size;
+	return _size;
 
 }
 
@@ -66,6 +66,8 @@ bool ll::LinkedList<Type>::push_front(Type data){
 
 	head = new_node;
 
+	_size++;
+
 	return true;
 
 }
@@ -91,6 +93,8 @@ bool ll::LinkedList<Type>::push_back(Type data){
 	for(; tail -> next != nullptr; tail = tail -> next);
 
 	tail -> next = new_node;
+
+	_size++;
 
 	return true;
 
@@ -119,6 +123,8 @@ bool ll::LinkedList<Type>::insert(Type data, unsigned int pos){
 	new_node -> next = prev -> next;
 
 	prev -> next = new_node;
+
+	_size++;
 
 	return true;
 
@@ -181,6 +187,8 @@ void ll::LinkedList<Type>::clear(void){
 	}
 
 	head = nullptr;
+
+	_size = 0;
 
 }
 

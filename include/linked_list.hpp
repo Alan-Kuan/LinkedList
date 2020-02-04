@@ -28,12 +28,14 @@ namespace ll{
 	protected:
 		ListNode<Type>* head;
 
+		size_t _size;
+
 	public:
 		LinkedList(void);
 
 		~LinkedList(void);
 
-		unsigned int size(void);
+		size_t size(void);
 
 		ListNode<Type>* getAt(unsigned int pos);
 
