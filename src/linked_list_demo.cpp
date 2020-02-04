@@ -33,17 +33,14 @@ int main(void){
 
 		}
 
-		if(3 <= cmd && cmd <= 5){
+		if(3 <= cmd && cmd <= 6){
 
 			cout << "Enter the position: ";
 
 			cin >> args[1];
 
-		}
-
-		if(4 <= cmd && cmd <= 5){
-
-			getten_node = list.getAt(args[1]);
+			if(cmd > 3 && (getten_node = list.getAt(args[1])) == nullptr)
+				cout << "Failed: The node at " << args[1] << " was not found!" << endl;
 
 		}
 
@@ -53,22 +50,22 @@ int main(void){
 				terminated = true;
 				break;
 			case Cmd::push_front:
-				list.push_front(args[0]);
+				list.push_front(args[0]) ? cout << "Successfully pushed " << args[0] << '.' << endl : cout << "Failed: An error occurred while allocating memory." << endl;
 				break;
 			case Cmd::push_back:
-				list.push_back(args[0]);
+				list.push_back(args[0]) ? cout << "Successfully pushed " << args[0] << '.' << endl : cout << "Failed: An error occurred while allocating memory." << endl;
 				break;
 			case Cmd::insert:
-				list.insert(args[0], args[1]);
+				list.insert(args[0], args[1]) ? cout << "Successfully inserted " << args[0] << " at " << args[1] << '.' << endl : cout << "Failed: An error occurred while allocating memory, or the given position was out of bound." << endl;
 				break;
 			case Cmd::remove:
-				list.remove(getten_node);
+				if(list.remove(getten_node)) cout << "Successfully removed the node at " << args[1] << '.' << endl;
 				break;
 			case Cmd::getAt:
-				cout << "Data of the node at " << args[1] << ": " << getten_node -> getData() << endl;
+				if(getten_node != nullptr) cout << "Data of the node at " << args[1] << ": " << getten_node -> getData() << endl;
 				break;
 			case Cmd::update:
-				getten_node -> setData(args[0]);
+				if(getten_node != nullptr) getten_node -> setData(args[0]);
 				break;
 			case Cmd::clear:
 				list.clear();
