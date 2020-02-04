@@ -8,7 +8,7 @@ class ListNode{
 
 	template <class> friend class LinkedList;
 
-private:
+protected:
 	Type data;
 
 	ListNode* next;
@@ -23,7 +23,7 @@ public:
 template <class Type>
 class LinkedList{
 
-private:
+protected:
 	ListNode<Type>* head;
 
 public:
