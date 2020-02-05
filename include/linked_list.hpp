@@ -37,7 +37,7 @@ namespace ll{
 
 		size_t size(void);
 
-		ListNode<Type>* getAt(unsigned int pos);
+		ListNode<Type>* at(unsigned int pos);
 
 		ListNode<Type>* find(Type data);
 

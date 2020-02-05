@@ -41,7 +41,7 @@ size_t ll::LinkedList<Type>::size(void){
 }
 
 template <class Type>
-ll::ListNode<Type>* ll::LinkedList<Type>::getAt(unsigned int pos){
+ll::ListNode<Type>* ll::LinkedList<Type>::at(unsigned int pos){
 
 	ll::ListNode<Type>* curr = head;
 
@@ -125,7 +125,7 @@ bool ll::LinkedList<Type>::insert(Type data, unsigned int pos){
 	if(pos == 0)
 		return push_front(data);
 
-	ll::ListNode<Type>* prev = getAt(pos - 1);
+	ll::ListNode<Type>* prev = at(pos - 1);
 
 	// position was not found
 	if(prev == nullptr)
@@ -168,7 +168,7 @@ bool ll::LinkedList<Type>::remove(ListNode<Type>* node){
 template <class Type>
 bool ll::LinkedList<Type>::remove(unsigned int pos){
 
-	return remove(getAt(pos));
+	return remove(at(pos));
 
 }
 
