@@ -17,6 +17,12 @@ namespace ll{
 		ListNode* next;
 
 	public:
+		ListNode(void): next(nullptr){}
+
+		ListNode(Type data): data(data), next(nullptr){}
+
+		ListNode(Type data, ListNode* next): data(data), next(next){}
+
 		Type getData(void) const;
 
 		void setData(Type data);
@@ -32,7 +38,7 @@ namespace ll{
 		size_t _size;
 
 	public:
-		LinkedList(void);
+		LinkedList(void): head(nullptr), _size(0){}
 
 		~LinkedList(void);
 

@@ -18,15 +18,6 @@ Type ll::ListNode<Type>::getData(void) const{
 
 //----------- LinkedList -----------//
 template <class Type>
-ll::LinkedList<Type>::LinkedList(void){
-
-	head = nullptr;
-
-	_size = 0;
-
-}
-
-template <class Type>
 ll::LinkedList<Type>::~LinkedList(void){
 
 	clear();
@@ -68,15 +59,11 @@ ll::ListNode<Type>* ll::LinkedList<Type>::find(Type data) const{
 template <class Type>
 bool ll::LinkedList<Type>::push_front(Type data){
 
-	ll::ListNode<Type>* new_node = new ll::ListNode<Type>();
+	ll::ListNode<Type>* new_node = new ll::ListNode<Type>(data, head);
 
 	// memory allocation failed
 	if(new_node == nullptr)
 		return false;
-
-	new_node -> data = data;
-
-	new_node -> next = head;
 
 	head = new_node;
 
@@ -92,16 +79,12 @@ bool ll::LinkedList<Type>::push_back(Type data){
 	if(head == nullptr)
 		return push_front(data);
 
-	ll::ListNode<Type>* new_node = new ll::ListNode<Type>();
+	ll::ListNode<Type>* new_node = new ll::ListNode<Type>(data);
 
 	// memory allocation failed
 	if(new_node == nullptr)
 		return false;
-
-	new_node -> data = data;
-
-	new_node -> next = nullptr;
-
+	
 	ll::ListNode<Type>* tail = head;
 
 	for(; tail -> next != nullptr; tail = tail -> next);
@@ -117,14 +100,6 @@ bool ll::LinkedList<Type>::push_back(Type data){
 template <class Type>
 bool ll::LinkedList<Type>::insert(Type data, int pos){
 
-	ll::ListNode<Type>* new_node = new ll::ListNode<Type>();
-
-	// memory allocation failed
-	if(new_node == nullptr)
-		return false;
-
-	new_node -> data = data;
-
 	if(pos == 0)
 		return push_front(data);
 
@@ -134,7 +109,11 @@ bool ll::LinkedList<Type>::insert(Type data, int pos){
 	if(prev == nullptr)
 		return false;
 
-	new_node -> next = prev -> next;
+	ll::ListNode<Type>* new_node = new ll::ListNode<Type>(data, prev -> next);
+
+	// memory allocation failed
+	if(new_node == nullptr)
+		return false;
 
 	prev -> next = new_node;
 
