@@ -40,6 +40,8 @@ namespace ll{
 	public:
 		LinkedList(void): head(nullptr), _size(0){}
 
+		LinkedList(std::initializer_list<Type> init);
+
 		~LinkedList(void);
 
 		size_t size(void) const;

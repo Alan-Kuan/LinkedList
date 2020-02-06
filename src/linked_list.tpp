@@ -18,6 +18,14 @@ Type ll::ListNode<Type>::getData(void) const{
 
 //----------- LinkedList -----------//
 template <class Type>
+ll::LinkedList<Type>::LinkedList(std::initializer_list<Type> init): head(nullptr), _size(0){
+
+	for(const Type& item : init)
+		push_back(item);
+
+}
+
+template <class Type>
 ll::LinkedList<Type>::~LinkedList(void){
 
 	clear();
