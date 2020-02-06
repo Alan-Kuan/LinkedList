@@ -2,6 +2,7 @@
 #define LINKED_LIST_HPP
 
 #include <iostream>
+#include <stdexcept>
 
 namespace ll{
 
@@ -37,7 +38,7 @@ namespace ll{
 
 		size_t size(void);
 
-		ListNode<Type>* at(unsigned int pos);
+		ListNode<Type>* at(int pos);
 
 		ListNode<Type>* find(Type data);
 
@@ -45,15 +46,19 @@ namespace ll{
 
 		bool push_back(Type data);
 
-		bool insert(Type data, unsigned int pos);
+		bool insert(Type data, int pos);
 
 		bool remove(ListNode<Type>* node);
 
-		bool remove(unsigned int pos);
+		bool remove(int pos);
 
 		void clear(void);
 
 		void print(void);
+		
+		Type& operator[](int idx);
+
+		Type operator[](int idx) const;
 
 	};
 

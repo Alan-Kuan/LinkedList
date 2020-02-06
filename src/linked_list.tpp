@@ -41,13 +41,16 @@ size_t ll::LinkedList<Type>::size(void){
 }
 
 template <class Type>
-ll::ListNode<Type>* ll::LinkedList<Type>::at(unsigned int pos){
+ll::ListNode<Type>* ll::LinkedList<Type>::at(int pos){
+
+	if(pos < 0 || pos >= _size)
+		return nullptr;
 
 	ll::ListNode<Type>* curr = head;
 
-	for(int i = 0; curr != nullptr && i < pos; curr = curr -> next, i++);
+	for(int i = 0; i < pos; curr = curr -> next, i++);
 
-	return curr; // returns nullptr if the required node was not found
+	return curr;
 
 }
 
@@ -112,7 +115,7 @@ bool ll::LinkedList<Type>::push_back(Type data){
 }
 
 template <class Type>
-bool ll::LinkedList<Type>::insert(Type data, unsigned int pos){
+bool ll::LinkedList<Type>::insert(Type data, int pos){
 
 	ll::ListNode<Type>* new_node = new ll::ListNode<Type>();
 
@@ -166,7 +169,7 @@ bool ll::LinkedList<Type>::remove(ListNode<Type>* node){
 } 
 
 template <class Type>
-bool ll::LinkedList<Type>::remove(unsigned int pos){
+bool ll::LinkedList<Type>::remove(int pos){
 
 	return remove(at(pos));
 
@@ -212,5 +215,29 @@ void ll::LinkedList<Type>::print(void){
 	}
 
 	std::cout << "]" << std::endl;
+
+}
+
+template <class Type>
+Type& ll::LinkedList<Type>::operator[](int idx){
+
+	ListNode<Type>* node = at(idx);
+
+	if(node == nullptr)
+		throw std::out_of_range("The given index was out of range of the linked list!");
+
+	return node -> data;
+
+}
+
+template <class Type>
+Type ll::LinkedList<Type>::operator[](int idx) const{
+
+	ListNode<Type>* node = at(idx);
+
+	if(node == nullptr)
+		throw std::out_of_range("The given index was out of range of the linked list!");
+
+	return node -> data;
 
 }
