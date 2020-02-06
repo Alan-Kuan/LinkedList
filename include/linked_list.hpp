@@ -17,7 +17,7 @@ namespace ll{
 		ListNode* next;
 
 	public:
-		Type getData(void);
+		Type getData(void) const;
 
 		void setData(Type data);
 
@@ -36,11 +36,11 @@ namespace ll{
 
 		~LinkedList(void);
 
-		size_t size(void);
+		size_t size(void) const;
 
-		ListNode<Type>* at(int pos);
+		ListNode<Type>* at(int pos) const;
 
-		ListNode<Type>* find(Type data);
+		ListNode<Type>* find(Type data) const;
 
 		bool push_front(Type data);
 
@@ -54,7 +54,7 @@ namespace ll{
 
 		void clear(void);
 
-		void print(void);
+		void print(void) const;
 		
 		Type& operator[](int idx);
 

@@ -9,7 +9,7 @@ void ll::ListNode<Type>::setData(Type data){
 }
 
 template <class Type>
-Type ll::ListNode<Type>::getData(void){
+Type ll::ListNode<Type>::getData(void) const{
 
 	return data;
 
@@ -34,14 +34,14 @@ ll::LinkedList<Type>::~LinkedList(void){
 }
 
 template <class Type>
-size_t ll::LinkedList<Type>::size(void){
+size_t ll::LinkedList<Type>::size(void) const{
 
 	return _size;
 
 }
 
 template <class Type>
-ll::ListNode<Type>* ll::LinkedList<Type>::at(int pos){
+ll::ListNode<Type>* ll::LinkedList<Type>::at(int pos) const{
 
 	if(pos < 0 || pos >= _size)
 		return nullptr;
@@ -55,7 +55,7 @@ ll::ListNode<Type>* ll::LinkedList<Type>::at(int pos){
 }
 
 template <class Type>
-ll::ListNode<Type>* ll::LinkedList<Type>::find(Type data){
+ll::ListNode<Type>* ll::LinkedList<Type>::find(Type data) const{
 
 	ll::ListNode<Type>* curr = head;
 
@@ -199,7 +199,7 @@ void ll::LinkedList<Type>::clear(void){
 }
 
 template <class Type>
-void ll::LinkedList<Type>::print(void){
+void ll::LinkedList<Type>::print(void) const{
 
 	ll::ListNode<Type>* curr = head;
 
