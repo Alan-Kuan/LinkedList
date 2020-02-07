@@ -3,8 +3,8 @@
 
 using namespace std;
 
-// namespace of my linked list
-using namespace ll;
+// namespace of my library
+using namespace Nlib;
 
 namespace Cmd{
 

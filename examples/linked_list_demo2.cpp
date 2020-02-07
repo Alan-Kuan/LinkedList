@@ -3,7 +3,8 @@
 
 using namespace std;
 
-using namespace ll;
+// namespace of my library
+using namespace Nlib;
 
 int main(void){
 

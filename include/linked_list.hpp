@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 
-namespace ll{
+namespace Nlib{
 
 	template <class Type>
 	class ListNode{

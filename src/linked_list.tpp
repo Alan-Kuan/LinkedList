@@ -2,14 +2,14 @@
 
 //----------- ListNode -----------//
 template <class Type>
-void ll::ListNode<Type>::setData(Type data){
+void Nlib::ListNode<Type>::setData(Type data){
 
 	this -> data = data;
 
 }
 
 template <class Type>
-Type ll::ListNode<Type>::getData(void) const{
+Type Nlib::ListNode<Type>::getData(void) const{
 
 	return data;
 
@@ -18,7 +18,7 @@ Type ll::ListNode<Type>::getData(void) const{
 
 //----------- LinkedList -----------//
 template <class Type>
-ll::LinkedList<Type>::LinkedList(std::initializer_list<Type> init): head(nullptr), _size(0){
+Nlib::LinkedList<Type>::LinkedList(std::initializer_list<Type> init): head(nullptr), _size(0){
 
 	for(const Type& item : init)
 		push_back(item);
@@ -26,26 +26,26 @@ ll::LinkedList<Type>::LinkedList(std::initializer_list<Type> init): head(nullptr
 }
 
 template <class Type>
-ll::LinkedList<Type>::~LinkedList(void){
+Nlib::LinkedList<Type>::~LinkedList(void){
 
 	clear();
 
 }
 
 template <class Type>
-size_t ll::LinkedList<Type>::size(void) const{
+size_t Nlib::LinkedList<Type>::size(void) const{
 
 	return _size;
 
 }
 
 template <class Type>
-ll::ListNode<Type>* ll::LinkedList<Type>::at(int pos) const{
+Nlib::ListNode<Type>* Nlib::LinkedList<Type>::at(int pos) const{
 
 	if(pos < 0 || pos >= _size)
 		return nullptr;
 
-	ll::ListNode<Type>* curr = head;
+	Nlib::ListNode<Type>* curr = head;
 
 	for(int i = 0; i < pos; curr = curr -> next, i++);
 
@@ -54,9 +54,9 @@ ll::ListNode<Type>* ll::LinkedList<Type>::at(int pos) const{
 }
 
 template <class Type>
-ll::ListNode<Type>* ll::LinkedList<Type>::find(Type data) const{
+Nlib::ListNode<Type>* Nlib::LinkedList<Type>::find(Type data) const{
 
-	ll::ListNode<Type>* curr = head;
+	Nlib::ListNode<Type>* curr = head;
 
 	for(; curr != nullptr && curr -> data != data; curr = curr -> next);
 
@@ -65,9 +65,9 @@ ll::ListNode<Type>* ll::LinkedList<Type>::find(Type data) const{
 }
 
 template <class Type>
-bool ll::LinkedList<Type>::push_front(Type data){
+bool Nlib::LinkedList<Type>::push_front(Type data){
 
-	ll::ListNode<Type>* new_node = new ll::ListNode<Type>(data, head);
+	Nlib::ListNode<Type>* new_node = new Nlib::ListNode<Type>(data, head);
 
 	// memory allocation failed
 	if(new_node == nullptr)
@@ -82,18 +82,18 @@ bool ll::LinkedList<Type>::push_front(Type data){
 }
 
 template <class Type>
-bool ll::LinkedList<Type>::push_back(Type data){
+bool Nlib::LinkedList<Type>::push_back(Type data){
 
 	if(head == nullptr)
 		return push_front(data);
 
-	ll::ListNode<Type>* new_node = new ll::ListNode<Type>(data);
+	Nlib::ListNode<Type>* new_node = new Nlib::ListNode<Type>(data);
 
 	// memory allocation failed
 	if(new_node == nullptr)
 		return false;
 	
-	ll::ListNode<Type>* tail = head;
+	Nlib::ListNode<Type>* tail = head;
 
 	for(; tail -> next != nullptr; tail = tail -> next);
 
@@ -106,18 +106,18 @@ bool ll::LinkedList<Type>::push_back(Type data){
 }
 
 template <class Type>
-bool ll::LinkedList<Type>::insert(Type data, int pos){
+bool Nlib::LinkedList<Type>::insert(Type data, int pos){
 
 	if(pos == 0)
 		return push_front(data);
 
-	ll::ListNode<Type>* prev = at(pos - 1);
+	Nlib::ListNode<Type>* prev = at(pos - 1);
 
 	// position was not found
 	if(prev == nullptr)
 		return false;
 
-	ll::ListNode<Type>* new_node = new ll::ListNode<Type>(data, prev -> next);
+	Nlib::ListNode<Type>* new_node = new Nlib::ListNode<Type>(data, prev -> next);
 
 	// memory allocation failed
 	if(new_node == nullptr)
@@ -132,12 +132,12 @@ bool ll::LinkedList<Type>::insert(Type data, int pos){
 }
 
 template <class Type>
-bool ll::LinkedList<Type>::remove(ListNode<Type>* node){
+bool Nlib::LinkedList<Type>::remove(ListNode<Type>* node){
 
 	if(node == nullptr)
 		return false;
 	
-	ll::ListNode<Type>** indirect = &head;
+	Nlib::ListNode<Type>** indirect = &head;
 
 	for(; *indirect != nullptr && *indirect != node; indirect = &((*indirect) -> next));
 
@@ -156,18 +156,18 @@ bool ll::LinkedList<Type>::remove(ListNode<Type>* node){
 } 
 
 template <class Type>
-bool ll::LinkedList<Type>::remove(int pos){
+bool Nlib::LinkedList<Type>::remove(int pos){
 
 	return remove(at(pos));
 
 }
 
 template <class Type>
-void ll::LinkedList<Type>::clear(void){
+void Nlib::LinkedList<Type>::clear(void){
 
-	ll::ListNode<Type>* prev = nullptr;
+	Nlib::ListNode<Type>* prev = nullptr;
 
-	ll::ListNode<Type>* curr = head;
+	Nlib::ListNode<Type>* curr = head;
 
 	while(curr != nullptr){
 
@@ -186,9 +186,9 @@ void ll::LinkedList<Type>::clear(void){
 }
 
 template <class Type>
-void ll::LinkedList<Type>::print(void) const{
+void Nlib::LinkedList<Type>::print(void) const{
 
-	ll::ListNode<Type>* curr = head;
+	Nlib::ListNode<Type>* curr = head;
 
 	std::cout << '[';
 
@@ -206,7 +206,7 @@ void ll::LinkedList<Type>::print(void) const{
 }
 
 template <class Type>
-Type& ll::LinkedList<Type>::operator[](int idx){
+Type& Nlib::LinkedList<Type>::operator[](int idx){
 
 	ListNode<Type>* node = at(idx);
 
@@ -218,7 +218,7 @@ Type& ll::LinkedList<Type>::operator[](int idx){
 }
 
 template <class Type>
-Type ll::LinkedList<Type>::operator[](int idx) const{
+Type Nlib::LinkedList<Type>::operator[](int idx) const{
 
 	ListNode<Type>* node = at(idx);
 
