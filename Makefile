@@ -1,12 +1,14 @@
-CC = g++
+CXX = g++
 
-.PHONY: demo, demo2, clean
+CXXFLAGS = -I include/
 
-demo: examples/linked_list_demo.cpp include/linked_list.hpp src/linked_list.tpp
-	$(CC) -o run_demo $<
+.PHONY: demo demo2 clean
 
-demo2: examples/linked_list_demo2.cpp include/linked_list.hpp src/linked_list.tpp
-	$(CC) -o run_demo2 $<
+demo: examples/linked_list_demo.cpp
+	$(CXX) -o run_demo $< $(CXXFLAGS)
+
+demo2: examples/linked_list_demo2.cpp
+	$(CXX) -o run_demo2 $< $(CXXFLAGS)
 
 clean:
 	-rm *.o

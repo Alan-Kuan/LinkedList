@@ -1,4 +1,4 @@
-#include "../include/linked_list.hpp"
+#include "linked_list.hpp"
 
 //----------- ListNode -----------//
 template <class Type>
